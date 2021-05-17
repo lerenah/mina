@@ -115,6 +115,9 @@ client_sdk :
 	ulimit -s 65532 && (ulimit -n 10240 || true) && dune build src/app/client_sdk/client_sdk.bc.js --profile=nonconsensus_mainnet
 	$(info Build complete)
 
+hash_tests : client_sdk
+	node src/app/client_sdk/tests/test_hash.js 
+
 client_sdk_test_sigs :
 	$(info Starting Build)
 	ulimit -s 65532 && (ulimit -n 10240 || true) && dune build src/app/client_sdk/tests/test_signatures.exe --profile=mainnet
